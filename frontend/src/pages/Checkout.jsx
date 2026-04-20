@@ -27,7 +27,7 @@ const deliveryOptions = [
 ];
 
 const Checkout = () => {
-  const { cart } = useContext(AddCart);
+  const { cart, clearCart, addPurchaseHistory } = useContext(AddCart);
   const { user } = useAuth();
   const navigate = useNavigate();
   const [selectedDelivery, setSelectedDelivery] = useState(
@@ -96,6 +96,15 @@ const Checkout = () => {
         email: formData.email,
         contact: formData.phone,
       });
+      addPurchaseHistory({
+        items: cart,
+        total,
+        shippingCost,
+        savings,
+        deliveryType: selectedDelivery,
+        customer: formData,
+      });
+      clearCart();
       setOrderPlaced(true);
       window.scrollTo({ top: 0, behavior: "smooth" });
     } catch (error) {

@@ -2,6 +2,9 @@ import React from 'react'
 import { GoArrowRight } from 'react-icons/go'
 import { Link, NavLink } from 'react-router-dom'
 function Footer() {
+  const productRecommendationFormUrl =
+    'https://docs.google.com/forms/d/e/1FAIpQLScyGuKYf5BKyzctTA4sSQXSdVmpET35cP4i1mVV4JgFW7wIXg/viewform?usp=header';
+
   return (
     <div className=' py-10 '>
       <div className='md:flex md:justify-between items-center md:mx-20 mx-5  '>
@@ -53,6 +56,13 @@ function Footer() {
             <Link to="/" className='hover:text-gray-600'>Contact</Link>
             <Link to="/" className='hover:text-gray-600'>FAQ</Link>
             <Link to="/" className='hover:text-gray-600'>Shipping</Link>
+            <a
+              href={productRecommendationFormUrl}
+              className='hover:text-gray-600'
+            >
+              Product Recommendation
+            </a>
+            <Link to="/purchase-history" className='hover:text-gray-600'>Purchase History</Link>
           </div>
           <div className='flex flex-col gap-4'>
             <Link to="/" className='hover:text-gray-600'>Shipping</Link>

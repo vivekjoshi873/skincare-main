@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { AddCart } from '../../context/AddCart';
-import '../../index.css'; 
+import '../../index.css';
 
 function Cart() {
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
@@ -30,6 +30,11 @@ function Cart() {
     navigate('/checkout');
   };
 
+  const goToPurchaseHistory = () => {
+    setIsDrawerOpen(false);
+    navigate('/purchase-history');
+  };
+
   return (
     <div className='text-base font-medium'>
       <button className='text-base font-medium nav-link' onClick={toggleDrawer}>
@@ -54,7 +59,7 @@ function Cart() {
                     <img src={item.image} alt={item.name} className="w-20 h-22 object-cover mr-4  my-2 bg-zinc-100 rounded-sm" />
                     <div>
                       <p className="font-medium">{item.name}</p>
-                      <p className="text-gray-400  my-2">€{item.price}</p>
+                      <p className="text-gray-400  my-2">Rs.{item.price}</p>
                       <div className="flex items-center">
                         <button
                           onClick={() => decreaseQuantity(item.id)}
@@ -90,7 +95,7 @@ function Cart() {
           <div className='px-4 py-4 border-t mt-auto'>
             <div className="flex justify-between items-center mb-2">
               <p className="font-bold">Total:</p>
-              <p className="font-bold">₹{cart.reduce((total, item) => total + item.price * (item.quantity || 1), 0)}</p>
+              <p className="font-bold">Rs.{cart.reduce((total, item) => total + item.price * (item.quantity || 1), 0)}</p>
             </div>
             <div className='flex justify-between items-center mb-4'>
               <p className='text-gray-400 text-sm font-medium'>Shipping</p>
@@ -101,9 +106,26 @@ function Cart() {
                 onClick={goToCheckout}
                 className=' bg-black text-white w-full py-3 sm:py-4 px-4 text-sm sm:text-base font-medium rounded-md tracking-widest '
               >
-                Proceed to Checkout — ₹{cart.reduce((total, item) => total + item.price * (item.quantity || 1), 0)}
+                Proceed to Checkout - Rs.{cart.reduce((total, item) => total + item.price * (item.quantity || 1), 0)}
               </button>
             </div>
+            <button
+              onClick={goToPurchaseHistory}
+              className='mt-3 w-full py-3 sm:py-4 px-4 text-sm sm:text-base font-medium rounded-md tracking-widest border border-black text-black hover:bg-black hover:text-white transition-colors'
+            >
+              Purchase History
+            </button>
+          </div>
+        )}
+
+        {cart.length === 0 && (
+          <div className='px-4 py-4 border-t mt-auto'>
+            <button
+              onClick={goToPurchaseHistory}
+              className='w-full py-3 sm:py-4 px-4 text-sm sm:text-base font-medium rounded-md tracking-widest border border-black text-black hover:bg-black hover:text-white transition-colors'
+            >
+              Purchase History
+            </button>
           </div>
         )}
       </div>

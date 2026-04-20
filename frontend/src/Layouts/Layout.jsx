@@ -15,9 +15,10 @@ const Layout = () => {
   const isstorePage = location.pathname === '/store';
   const isLoginPage = location.pathname === '/login';
   const isCheckoutPage = location.pathname === '/checkout';
+  const isPurchaseHistoryPage = location.pathname === '/purchase-history';
   return (
     <>
-      {!isAllProductsPage && !isCurlyHairPage && !issuncreamPage && !isacnePage && !istanningcreamPage && !isfacewashPage && !iscicacreamPage && !isstorePage && !isLoginPage && !isCheckoutPage && <Header showHero={true} />}
+      {!isAllProductsPage && !isCurlyHairPage && !issuncreamPage && !isacnePage && !istanningcreamPage && !isfacewashPage && !iscicacreamPage && !isstorePage && !isLoginPage && !isCheckoutPage && !isPurchaseHistoryPage && <Header showHero={true} />}
       <Outlet />
       <Footer />
     </>

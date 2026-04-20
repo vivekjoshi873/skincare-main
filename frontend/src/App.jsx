@@ -13,6 +13,7 @@ import AcneCream from "./pages/AcneProne";
 import Cicacream from "./pages/CicaCream";
 import Login from "./pages/Login";
 import Checkout from "./pages/Checkout";
+import PurchaseHistory from "./pages/PurchaseHistory";
 import { useAuth } from "./context/AuthContext";
 
 const ProtectedRoute = ({ children }) => {
@@ -45,6 +46,7 @@ function App() {
           <Route path="acnecream" element={<AcneCream />} />
           <Route path="cicacream" element={<Cicacream />} />
           <Route path="checkout" element={<Checkout />} />
+          <Route path="purchase-history" element={<PurchaseHistory />} />
         </Route>
       </Routes>
     </BrowserRouter>
